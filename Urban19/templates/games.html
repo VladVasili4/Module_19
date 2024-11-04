@@ -18,16 +18,24 @@
 
     <main>
         {% block content %}
-        <h1 align="center">Самые актуальные недорого</h1>
-        {% for i in servers %}         <!-- заменил server_list на servers -->
-        <h2> {{i}} <button>Купить</button> </h2>
+        <h1 align="center">Список игр</h1>
+
+    <ul>
+        {% for game in games_menu %}
+            <li>
+                <h3>{{ game.title }} | {{ game.description }}. Стоимость: {{ game.cost }}
+                    <button>Купить</button> </h3>
+            </li>
+        {% empty %}
+            <li>Нет доступных игр.</li>
         {% endfor %}
+    </ul>
         {% endblock %}
     </main>
 
     <footer>
         {% block basement %}
-        <button><a href="http://127.0.0.1:8000/wow">Вернуться на главную страницу</a></button>
+        <button><a href="http://127.0.0.1:8000">Вернуться на главную страницу</a></button>
         {% endblock %}
     </footer>
 

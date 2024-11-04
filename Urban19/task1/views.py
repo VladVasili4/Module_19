@@ -4,8 +4,7 @@ from .forms import UserRegister
 from django.http import HttpResponse
 from .models import *
 
-# Псевдо-список пользователей
-users = ['Tom', 'Pop', 'Kok', 'Ivan', 'Puk']
+
 def index_reg(request):
     info = {}
 
@@ -18,20 +17,27 @@ def index_reg(request):
             repeat_password = form.cleaned_data['repeat_password']
             age = form.cleaned_data['age']
 
+            # Получаем всех покупателей
+            existing_buyers = Buyer.objects.values_list('name', flat=True)
+
             if password != repeat_password:
                 info['error'] = "Пароли не совпадают"
             elif age < 18:
                 info['error'] = "Вы должны быть старше 18"
-            elif username in users:
+            elif username in existing_buyers:
                 info['error'] = "Пользователь уже существует"
             else:
-                info['welcome_message'] = f"Приветствуем, {username}!"  # Приветственное сообщение
+                # Создаем нового покупателя
+                Buyer.objects.create(name=username, balance=0.00, age=age)
+                info['welcome_message'] = f"Приветствуем, {username}!"  
+
         info['form'] = form
     else:
         form = UserRegister()
         info['form'] = form
 
     return render(request, 'registration_page.html', context=info)
+
 
 def index(request):
     title = 'Games'
@@ -44,10 +50,9 @@ def index(request):
 
 
 def index_game(request):
-    server_list = {
-        'servers': ['Sirus', 'Uwow', 'WOW Circle'],
-    }
-    return render(request, 'games.html', context=server_list)
+    games_all = Game.objects.all()
+    return render(request, 'games.html', context={'games_menu': games_all})
+
 
 def index_cart(request):
     title = 'Cart'
