@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Регистрация</title>
+</head>
+<body>
+
+    <form method="post">
+        {% csrf_token %}
+        {% if error %}
+           <h3> <div class="error">{{ error }}</div></h3>
+        {% endif %}
+
+        <label for="{{ form.username.id_for_label }}">{{ form.username.label }}</label>
+        {{ form.username }}
+
+        <label for="{{ form.password.id_for_label }}">{{ form.password.label }}</label>
+        {{ form.password }}
+
+        <label for="{{ form.repeat_password.id_for_label }}">{{ form.repeat_password.label }}</label>
+        {{ form.repeat_password }}
+
+        <label for="{{ form.age.id_for_label }}">{{ form.age.label }}</label>
+        {{ form.age }}
+
+        <button type="submit">Зарегистрироваться</button>
+
+    {% if welcome_message %}
+        <h2 align="center"><div class="welcome">{{ welcome_message }}</div> </h2> <!-- Вывод приветственного сообщения -->
+    {% endif %}
+    </form>
+
+</body>
+</html>

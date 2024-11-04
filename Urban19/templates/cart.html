@@ -1,0 +1,43 @@
+{% extends 'menu.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+</head>
+<body>
+    <header>
+    {% block pagename %} <h1 align="center">Приобретайте крутых персонажей недорого </h1> {% endblock %}
+    </header>
+
+    <nav>
+        {% block menu %}
+        {{ block.super }}
+        <h2> * </h2>
+        {% endblock %}
+    </nav>
+
+    <main>
+        {% block content %}
+        <ul>
+            <li><h3>Воин <button>В корзину</button> </h3></li>
+            <li><h3>Паладин <button>В корзину</button></h3> </li>
+            <li><h3>Маг <button>В корзину</button></h3> </li>
+            <li><h3>Чернокнижник <button>В корзину</button></h3> </li>
+            <li><h3>Охотник <button>В корзину</button></h3> </li>
+            <li><h3>Друид <button>В корзину</button></h3> </li>
+            <li><h3>Шаман <button>В корзину</button></h3> </li>
+            <li><h3>Жрец <button>В корзину</button></h3> </li>
+            <li><h3>Разбойник <button>В корзину</button></h3> </li>
+        </ul>
+        {% endblock %}
+    </main>
+
+    <footer>
+        {% block basement %}
+        <h2> Ваша корзина пуста</h2>
+        <button><a href="http://127.0.0.1:8000/wow">Вернуться на главную страницу</a></button>
+        {% endblock %}
+    </footer>
+</body>
+</html>

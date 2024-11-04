@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+</head>
+<body>
+<header>
+    {% block pagename %}
+        <h1>Главная страница</h1>
+    {% endblock %}
+</header>
+
+<nav>
+    {% block menu %}
+        <p><h3><a href="#" >Главная</a></h3></p>
+        <p><h3><a href="http://127.0.0.1:8000/games" >Игры</a></h3></p>
+        <p><h3><a href="http://127.0.0.1:8000/cart" >Корзина</a></h3></p>
+    {% endblock %}
+</nav>
+
+<main>
+    {% block content %}
+        <p>Здесь будет какой-то контент, допишем </p>
+    {% endblock %}
+</main>
+
+<footer>
+        {% block basement %}
+        <p>Здесь будет подвальное меню продолжим после</p>
+    {% endblock %}
+</footer>
+
+</body>
+</html>

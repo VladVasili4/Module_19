@@ -1,0 +1,29 @@
+{% extends 'menu.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WOW</title>
+</head>
+<body>
+    <header>
+        {% block pagename %} {{ block.super }} {% endblock %}
+    </header>
+
+    <nav>
+        {% block menu %}
+        {{ block.super }}
+        {% endblock %}
+    </nav>
+
+    <main>
+        {% block content %}
+        {{ block.super }}
+        {% endblock %}
+    </main>
+
+<!--<p><h3><a href="#" >Главная</a></h3></p>-->
+<!--<p><h3><a href="http://127.0.0.1:8000/games" >Игры</a></h3></p>-->
+<!--<p><h3><a href="http://127.0.0.1:8000/cart" >Корзина</a></h3></p>-->
+</body>
+</html>
